@@ -4,6 +4,8 @@
 // respond with a value
 
 $query = $_GET['q'];
+$all = $_GET['all'];
+
 $definition = [
     "definition" => "A statement of the exact meaning of a word, especially in a dictionary.",
     "bar" => "A place that sells alcholic beverages",
@@ -39,7 +41,7 @@ $xmldata = '<?xml version="1.0" encoding="UTF-8"?>
     </definition>
 </entries>';
 
-if ($query == ""){
+if ($query === "" && $all === "true"){
     header('Content-Type: text/xml');
     $xmlOutput = new SimpleXMLElement($xmldata);
     echo $xmlOutput->asXML();
